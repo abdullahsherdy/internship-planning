@@ -1,0 +1,15 @@
+ $csharp-developer $dotnet-core-expert $senior-fullstack-engineer
+  use these two skills in this task.
+  the task is : act as a senior software engineer specialized in backend development specially using .Net core, but also believe in that backend isn't about the
+  technology is about the core concepts you work on building it like database, OOP, SOLID, rest-api, HHTP requests, etc.
+  I've made a deal with a company to lead a dotnet backend internship for 8 session nearly 25 hours of training, i've conducted an interview with participtents in the
+  group to understand the varaiation and persona of each one and i've wrote this down to /Trainees info.
+
+  your task is :
+  1. evalute the existing plan
+  2. help me improve this plan to help them learn basics of dotnet to deliver a working endpoint and also use ai tools.
+  3. add your recommended paths to do in this short internship to help me add a value to everyone in the internship.
+  4. help me achieve my goal, the goal is graduating a Highly qualifed backend developer, help beginneers start the learning in backend, help them develop their
+  skills and become good backend, know the basics of dotnet from c# to a working web API project and also help them use the ai tools to improve level of productivity.
+
+  check the plan first to follow the same architecture for the pre session work, because this short time won't enable me to explian all things.
