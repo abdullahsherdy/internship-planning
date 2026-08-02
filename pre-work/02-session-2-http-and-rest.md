@@ -31,6 +31,7 @@ Read these pages:
 
 Focus on:
 
+
 - `GET`, `POST`, `PUT`, `PATCH`, and `DELETE`.
 - Safe versus idempotent methods.
 - `200`, `201`, `204`, `400`, `401`, `403`, `404`, `409`, and `500`.
@@ -122,4 +123,3 @@ Explain why these are weak API routes and suggest improvements:
 ## Blocked?
 
 Send the request text, exact response status/body, API console output, and URL. Do not hide the response body.
-

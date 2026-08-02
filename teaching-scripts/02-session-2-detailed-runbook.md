@@ -29,7 +29,9 @@ Legend: **SAY** = speak (near-verbatim, adapt naturally) · **DO** = action on s
 1. "A request arrives at the API. Name the two things routing uses to pick the method that runs." *(path + HTTP method)*
 2. "What status code says 'you asked for something that does not exist'?" *(404)*
 3. "Why did we return a `ProjectResponse` record instead of the `Project` class?" *(contract ≠ storage shape)*
+
 4. "What is the *body* of an HTTP request? When does a GET have one?" *(payload; conventionally never)*
+
 5. "From pre-work: which is idempotent — POST or PUT — and what does that word mean?" *(PUT; same request twice = same end state)*
 
 If Q5 gets blank stares, don't fix it now — **SAY:** "Park that. In 30 minutes you'll answer it yourself."
@@ -39,6 +41,12 @@ If Q5 gets blank stares, don't fix it now — **SAY:** "Park that. In 30 minutes
 **SAY:** "This is today's whole subject in one bug: the response *is* the product. The client got 'success, here's nothing.' Today we learn to say exactly what we mean."
 
 **Blockers round (2 min):** "Anyone blocked on environment or homework? Not 'confused' — *blocked*. Confusions we fix in the session; blockers we fix now or you pair up."
+
+"OPTIONS: Describes the communication parameters and allowed methods for the target resource.
+
+CONNECT: Establishes a transparent network tunnel to a server, typically for HTTPS proxies.
+
+TRACE: Performs a diagnostic message loop-back test along the path to the target resource"
 
 ---
 
@@ -83,6 +91,7 @@ If Q5 gets blank stares, don't fix it now — **SAY:** "Park that. In 30 minutes
 worked? ──yes──> body to return? ──yes──> 200
         │                        └─no──> 204
         │        created something? ───> 201 + Location
+        |
         └─no──> client's fault? ─ bad input 400 / missing 404 / conflict 409
                 our fault? ─────────────> 500
 ```
