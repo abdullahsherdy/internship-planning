@@ -1,5 +1,8 @@
 # Before Session 1: C# and Backend Basics
 
+> **Abdullah Sherdy** — .NET Backend Instructor
+> [abdullahsherdy.tech](https://abdullahsherdy.tech) · [YouTube](https://youtube.com/@abdullah.sherdy) · [LinkedIn](https://linkedin.com/in/abdullah-sherdy)
+
 **Required time:** 45 minutes  
 **Submit:** At least 12 hours before Session 1  
 **AI rule:** Do the required exercise without AI. You may use AI only after submitting your first attempt.
@@ -99,3 +102,15 @@ https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-1/
 
 Focus on making the program work. Do not study inheritance, delegates, events, or advanced LINQ yet.
 
+
+---
+
+*Prepared by* **Abdullah Sherdy** *— .NET Backend Instructor*
+
+Found this useful? I publish more .NET and backend engineering content:
+
+- **Website:** [abdullahsherdy.tech](https://abdullahsherdy.tech) — articles, projects, and contact
+- **YouTube:** [@abdullah.sherdy](https://youtube.com/@abdullah.sherdy) — video walkthroughs and tutorials
+- **LinkedIn:** [abdullah-sherdy](https://linkedin.com/in/abdullah-sherdy) — connect and follow my work
+
+*Questions about this material? Reach out on any channel above.*

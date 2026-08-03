@@ -1,5 +1,8 @@
 # Before Session 8: Release Readiness and Demo Preparation
 
+> **Abdullah Sherdy** — .NET Backend Instructor
+> [abdullahsherdy.tech](https://abdullahsherdy.tech) · [YouTube](https://youtube.com/@abdullah.sherdy) · [LinkedIn](https://linkedin.com/in/abdullah-sherdy)
+
 **Required time:** 45 minutes plus one timed rehearsal  
 **Submit:** At least 12 hours before Session 8
 
@@ -121,3 +124,15 @@ Explain why it improves delivery or operation.
 
 Report deployment problems separately from core API problems. A failed hosting provider must not prevent you from demonstrating the local API, tests, and release process.
 
+
+---
+
+*Prepared by* **Abdullah Sherdy** *— .NET Backend Instructor*
+
+Found this useful? I publish more .NET and backend engineering content:
+
+- **Website:** [abdullahsherdy.tech](https://abdullahsherdy.tech) — articles, projects, and contact
+- **YouTube:** [@abdullah.sherdy](https://youtube.com/@abdullah.sherdy) — video walkthroughs and tutorials
+- **LinkedIn:** [abdullah-sherdy](https://linkedin.com/in/abdullah-sherdy) — connect and follow my work
+
+*Questions about this material? Reach out on any channel above.*

@@ -1,5 +1,8 @@
 # Before Session 2: HTTP, REST, and API Contracts
 
+> **Abdullah Sherdy** — .NET Backend Instructor
+> [abdullahsherdy.tech](https://abdullahsherdy.tech) · [YouTube](https://youtube.com/@abdullah.sherdy) · [LinkedIn](https://linkedin.com/in/abdullah-sherdy)
+
 **Required time:** 40 minutes  
 **Submit:** At least 12 hours before Session 2
 
@@ -123,3 +126,15 @@ Explain why these are weak API routes and suggest improvements:
 ## Blocked?
 
 Send the request text, exact response status/body, API console output, and URL. Do not hide the response body.
+
+---
+
+*Prepared by* **Abdullah Sherdy** *— .NET Backend Instructor*
+
+Found this useful? I publish more .NET and backend engineering content:
+
+- **Website:** [abdullahsherdy.tech](https://abdullahsherdy.tech) — articles, projects, and contact
+- **YouTube:** [@abdullah.sherdy](https://youtube.com/@abdullah.sherdy) — video walkthroughs and tutorials
+- **LinkedIn:** [abdullah-sherdy](https://linkedin.com/in/abdullah-sherdy) — connect and follow my work
+
+*Questions about this material? Reach out on any channel above.*

@@ -1,7 +1,12 @@
 # Before Session 4: LINQ, Relationships, DTOs, and Async
 
+> **Abdullah Sherdy** — .NET Backend Instructor
+> [abdullahsherdy.tech](https://abdullahsherdy.tech) · [YouTube](https://youtube.com/@abdullah.sherdy) · [LinkedIn](https://linkedin.com/in/abdullah-sherdy)
+
 **Required time:** 45 minutes  
 **Submit:** At least 12 hours before Session 4
+
+> **Companion reference:** [`04-session-4-reference.md`](04-session-4-reference.md) covers everything behind this pack in depth — delegates, lambdas, generics, deferred execution, `IEnumerable` vs `IQueryable`, change tracking, and eager/lazy/explicit loading. The required work below stays at 45 minutes; read the reference before the session and keep it open during the project build.
 
 ## Why You Are Studying This
 
@@ -148,3 +153,15 @@ Also preview the Session 4 stretch story **TT-09** (sort tasks by an allow-liste
 
 Submit the input collection, your attempted query, expected output, and actual output or compiler error.
 
+
+---
+
+*Prepared by* **Abdullah Sherdy** *— .NET Backend Instructor*
+
+Found this useful? I publish more .NET and backend engineering content:
+
+- **Website:** [abdullahsherdy.tech](https://abdullahsherdy.tech) — articles, projects, and contact
+- **YouTube:** [@abdullah.sherdy](https://youtube.com/@abdullah.sherdy) — video walkthroughs and tutorials
+- **LinkedIn:** [abdullah-sherdy](https://linkedin.com/in/abdullah-sherdy) — connect and follow my work
+
+*Questions about this material? Reach out on any channel above.*

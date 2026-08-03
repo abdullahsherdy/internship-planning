@@ -1,5 +1,8 @@
 # Before Session 6: Testing, Debugging, and Git Discipline
 
+> **Abdullah Sherdy** — .NET Backend Instructor
+> [abdullahsherdy.tech](https://abdullahsherdy.tech) · [YouTube](https://youtube.com/@abdullah.sherdy) · [LinkedIn](https://linkedin.com/in/abdullah-sherdy)
+
 **Required time:** 45 minutes  
 **Submit:** At least 12 hours before Session 6
 
@@ -136,3 +139,15 @@ Explain its isolation, speed, and complexity tradeoffs. The project uses a fresh
 ## Blocked?
 
 Submit the rule, your proposed input, and what you do not know how to assert. Do not wait until you can write complete test code.
+
+---
+
+*Prepared by* **Abdullah Sherdy** *— .NET Backend Instructor*
+
+Found this useful? I publish more .NET and backend engineering content:
+
+- **Website:** [abdullahsherdy.tech](https://abdullahsherdy.tech) — articles, projects, and contact
+- **YouTube:** [@abdullah.sherdy](https://youtube.com/@abdullah.sherdy) — video walkthroughs and tutorials
+- **LinkedIn:** [abdullah-sherdy](https://linkedin.com/in/abdullah-sherdy) — connect and follow my work
+
+*Questions about this material? Reach out on any channel above.*

@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Read(//d/d/Coding Instructor/Netpoints Internship/**)",
-      "Read(//d/d/Coding Instructor/Netpoints Internship/pre-work/**)"
+      "Read(//d/d/Coding Instructor/Netpoints Internship/pre-work/**)",
+      "Bash(python -)"
     ]
   }
 }

@@ -1,5 +1,8 @@
 # Before Session 3: Relational Databases, SQL, and EF Core
 
+> **Abdullah Sherdy** — .NET Backend Instructor
+> [abdullahsherdy.tech](https://abdullahsherdy.tech) · [YouTube](https://youtube.com/@abdullah.sherdy) · [LinkedIn](https://linkedin.com/in/abdullah-sherdy)
+
 **Required time:** 45 minutes  
 **Submit:** At least 12 hours before Session 3  
 **Important:** SQL concepts are required. EF Core terminology is preparation, not a request to build the database early.
@@ -36,6 +39,8 @@ The database, not only C# code, should protect important data rules.
 Given:
 
 ```sql
+CREATE DATABASE TaskManager; 
+
 CREATE TABLE Projects
 (
     Id INTEGER PRIMARY KEY,
@@ -126,3 +131,15 @@ Add `CreatedAtUtc` and `DueDate` to the schema. Decide their data type and nulla
 
 Send your attempted SQL and the exact concept causing difficulty. A design can be wrong and still be useful for discussion; submit your attempt.
 
+
+---
+
+*Prepared by* **Abdullah Sherdy** *— .NET Backend Instructor*
+
+Found this useful? I publish more .NET and backend engineering content:
+
+- **Website:** [abdullahsherdy.tech](https://abdullahsherdy.tech) — articles, projects, and contact
+- **YouTube:** [@abdullah.sherdy](https://youtube.com/@abdullah.sherdy) — video walkthroughs and tutorials
+- **LinkedIn:** [abdullah-sherdy](https://linkedin.com/in/abdullah-sherdy) — connect and follow my work
+
+*Questions about this material? Reach out on any channel above.*

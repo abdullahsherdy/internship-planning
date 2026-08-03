@@ -11,6 +11,7 @@ These are the actual study packs to send before each live session. Each contains
 | 48 hours before Session 2 | [HTTP, REST, and API contracts](02-session-2-http-and-rest.md) | 40 min | Endpoint contracts and `.http` requests |
 | 48 hours before Session 3 | [SQL and EF Core](03-session-3-sql-and-ef-core.md) | 45 min | SQL statements and schema diagram |
 | 48 hours before Session 4 | [LINQ, relationships, DTOs, and async](04-session-4-linq-relationships-and-async.md) | 45 min | Query exercise and explanations |
+| With the Session 4 pack | [Session 4 reference: C#, LINQ, EF Core foundations](04-session-4-reference.md) | Reading companion (not graded) | None — study reference for the pack and the project build |
 | 48 hours before Session 5 | [OOP, SOLID, and boundaries](05-session-5-oop-solid-and-boundaries.md) | 45 min | Responsibility analysis and method design |
 | 48 hours before Session 6 | [Testing, debugging, and Git](06-session-6-testing-debugging-and-git.md) | 45 min | Test cases and improved commit messages |
 | 48 hours before Session 7 | [Security, authentication, and AI](07-session-7-security-auth-and-ai.md) | 50 min | Threat review, verified AI review, improved prompt |

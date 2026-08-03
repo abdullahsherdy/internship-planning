@@ -1,5 +1,8 @@
 # Pre-Work Gate: Setup and Baseline
 
+> **Abdullah Sherdy** — .NET Backend Instructor
+> [abdullahsherdy.tech](https://abdullahsherdy.tech) · [YouTube](https://youtube.com/@abdullah.sherdy) · [LinkedIn](https://linkedin.com/in/abdullah-sherdy)
+
 ## 1. Why This Matters
 
 Session 1 must be used for backend learning, not downloading SDKs or creating accounts. This gate verifies that every trainee can build, run, request, and commit before live training.
@@ -117,3 +120,15 @@ Explain the differences between:
 
 Post in the setup-help channel before the deadline. Environment blockers reported during Session 1 move to the recovery workflow so live training can continue.
 
+
+---
+
+*Prepared by* **Abdullah Sherdy** *— .NET Backend Instructor*
+
+Found this useful? I publish more .NET and backend engineering content:
+
+- **Website:** [abdullahsherdy.tech](https://abdullahsherdy.tech) — articles, projects, and contact
+- **YouTube:** [@abdullah.sherdy](https://youtube.com/@abdullah.sherdy) — video walkthroughs and tutorials
+- **LinkedIn:** [abdullah-sherdy](https://linkedin.com/in/abdullah-sherdy) — connect and follow my work
+
+*Questions about this material? Reach out on any channel above.*
