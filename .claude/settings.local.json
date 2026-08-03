@@ -3,7 +3,14 @@
     "allow": [
       "Read(//d/d/Coding Instructor/Netpoints Internship/**)",
       "Read(//d/d/Coding Instructor/Netpoints Internship/pre-work/**)",
-      "Bash(python -)"
+      "Bash(python -)",
+      "Bash(python -c \"import markdown, pygments\")",
+      "Bash(pip install *)",
+      "Bash(python scripts/md2pdf.py \"pre-work/04-session-4-reference.md\" -o pdf)",
+      "Bash(reg query *)",
+      "Read(//c/Program Files \\(x86\\)/**)",
+      "Read(//c/Program Files/**)",
+      "Bash(where msedge *)"
     ]
   }
 }
