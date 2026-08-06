@@ -135,6 +135,10 @@ def collect_inputs(raw_paths: list[str]) -> list[Path]:
     return files
 
 
+
+
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Convert Markdown to PDF locally.")
     parser.add_argument("inputs", nargs="+", help=".md files and/or directories")
@@ -150,3 +154,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
