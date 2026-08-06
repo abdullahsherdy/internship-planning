@@ -183,3 +183,80 @@
 | Session 7 | [TBD] | — |
 | S8 pre-work out | [TBD] | 48h before S8 |
 | Session 8 | [TBD] | Final demo + handoff |
+
+---
+
+Here's the minute-by-minute schedule for Sessions 4–8, built directly off the blueprint's session table.
+
+## Session 4 (3h) — Foundations & Auth
+
+| Time | Segment |
+|---|---|
+| 0:00–0:15 | Kickoff: explain the pivot (skills carry over, code doesn't), show the SeatSure demo end-state (2-min video/screenshot of the final `409` race + live update) so trainees see where they're headed |
+| 0:15–0:40 | New solution scaffold: project structure, EF Core + SQLite wiring, `User` entity, first migration |
+| 0:40–1:10 | JWT auth: register + login endpoints, password hashing, token issuance |
+| 1:10–1:20 | Break |
+| 1:20–1:55 | `Event` entity, `EventsController`: create (Organizer-only), list published, get by id — DTO records from the start |
+| 1:55–2:35 | Live coding: trainees build the same on their own machines, paired (stronger/weaker) |
+| 2:35–2:50 | Checkpoint: everyone has register/login + create/list events working; PR opened |
+| 2:50–3:00 | Exit ticket + preview of Session 5 |
+
+## Session 5 (3h) — Ticket Types & Ownership
+
+| Time | Segment |
+|---|---|
+| 0:00–0:10 | Review Session 4 exit tickets, address common issues |
+| 0:10–0:45 | `TicketType` entity, relationship to `Event`, migration |
+| 0:45–1:20 | `TicketTypesController`: create (owning Organizer only) — this is where **ownership checking** (not just role) gets taught explicitly |
+| 1:20–1:30 | Break |
+| 1:30–2:00 | List ticket types under an event; live coding/pairing |
+| 2:00–2:40 | Independent build time + office hours |
+| 2:40–2:50 | Checkpoint: full Event → TicketType relationship working end-to-end |
+| 2:50–3:00 | Exit ticket + preview of Session 6 |
+
+## Session 6 (3h) — Reservations & Concurrency (the core lesson)
+
+| Time | Segment |
+|---|---|
+| 0:00–0:10 | Review + frame today: "this is the session that makes the project" |
+| 0:10–0:20 | 15-min spike result: pin the concurrency-token approach (native RowVersion vs manual `Version` int) — decided before this session, presented here |
+| 0:20–1:00 | `Reservation` entity + migration; build `IReservationService` with the concurrency-safe create-hold logic live, narrating each step |
+| 1:00–1:10 | Break |
+| 1:10–1:40 | `ReservationsController`: create hold, confirm, cancel |
+| 1:40–2:00 | **Live demo: two terminals/Postman tabs race for the last ticket** — one gets `201`, one gets `409`. This is the moment; don't rush it |
+| 2:00–2:40 | Trainees implement and reproduce the race themselves, paired |
+| 2:40–2:50 | Checkpoint: everyone can trigger and explain the `409` |
+| 2:50–3:00 | Exit ticket + preview of Session 7 |
+
+## Session 7 (3h) — Background Job & Real-Time
+
+| Time | Segment |
+|---|---|
+| 0:00–0:10 | Review + frame: "what happens to a hold nobody confirms?" |
+| 0:10–0:50 | `HoldExpiryService : BackgroundService` — build live, including the scoped-`DbContext`-in-a-singleton-service gotcha (this trips almost everyone; teach it explicitly) |
+| 0:50–1:00 | Break |
+| 1:00–1:40 | `EventAvailabilityHub` (SignalR): group-per-event, `AvailabilityChanged` broadcast wired into create/confirm/cancel/expire |
+| 1:40–2:10 | Minimal demo page (static HTML or Swagger + browser console) showing a live update when a hold expires — trainees watch a number change in real time without refreshing |
+| 2:10–2:45 | Independent build + pairing time |
+| 2:45–2:55 | Checkpoint: create a hold, wait, watch it expire and the availability count restore live |
+| 2:55–3:00 | Preview of Session 8: "next time we prove it works and ship it" |
+
+## Session 8 (3h) — Testing, Hardening, Demo Day
+
+| Time | Segment |
+|---|---|
+| 0:00–0:10 | Review |
+| 0:10–0:40 | Unit tests on `IReservationService`: the `409`-on-oversell case, successful hold, expiry-restores-inventory case |
+| 0:40–1:10 | Integration test with `WebApplicationFactory`: full happy path + one negative case |
+| 1:10–1:20 | Break |
+| 1:20–1:45 | ProblemDetails polish — no naked `500`s; README + OpenAPI/Swagger doc |
+| 1:45–2:00 | Release checklist; hand out the post-internship roadmap (§9 of the blueprint) as their "keep building this" spec |
+| 2:00–2:50 | **Demo day**: each trainee (or pair) does the 4-min demo — create event → add ticket type → race two holds → show the `409` → confirm the winner → watch a second hold expire live via SignalR |
+| 2:50–3:00 | Wrap-up, certificate/next-steps framing |
+
+A few scheduling notes:
+- Every session reserves its last 10 minutes for a **checkpoint**, matching the old milestone-gate discipline — don't let this slip even under time pressure, it's what catches a falling-behind trainee at S5 instead of S8.
+- Session 6's demo (the `409` race) is the pivot's whole payoff — protect that block if anything runs long elsewhere; cut from independent-build time, not from that.
+- Stretch work (per the blueprint's table) isn't scheduled here — it's homework/parallel-track for trainees who finish Core checkpoints early, not squeezed into the shared clock.
+
+Want this folded into the blueprint file as a new section, or kept as a separate schedule doc?
