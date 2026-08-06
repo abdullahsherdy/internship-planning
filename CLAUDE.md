@@ -1,68 +1,53 @@
-# CLAUDE.md
+# CLAUDE.md — SeatSure Internship Project
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file guides Claude Code when working in this repository.
 
 ## What This Repository Is
 
-This is a **documentation-only workspace** — no application code, builds, or tests. It contains the curriculum for a Netpoints .NET backend internship: 8 online sessions x 3 hours (24 hours total), for a cohort of 20 trainees. The cohort is organized into three tracks — Stretch (2–4), Core (8–10), Foundation (6–8) — assigned per `plan_v2.md` §2 from the interview roster and confirmed by a baseline diagnostic (the older "3 advanced / 6 intermediate / 6 basic / 5 beginners" split in `plan.md` was corrected by plan_v2; use the track model).
+An ASP.NET Core (.NET 10 LTS) teaching project for a backend internship: **SeatSure**, a real-time event ticketing & reservation API. Built live across Sessions 4-8 of an 8-session internship (Sessions 1-3 were a different, now-retired project — do not reference or reuse anything from that project).
 
-The teaching stack described by the curriculum is .NET 10 LTS, C#, ASP.NET Core Web API (controllers), EF Core, SQLite (SQL Server optional), xUnit, Git/GitHub. The cumulative project is a **Task Tracker REST API** (Project + TaskItem entities only — deliberately small).
+The full spec is `project-blueprint-v3-seatsure.md` in this repo root — **read it before generating any code or session materials.** It is the source of truth for entities, API contract, concurrency design, and the session-by-session scope. Do not invent endpoints, status codes, or entities that aren't in that document without flagging the deviation first.
 
-## Authoritative Documents (read in this order)
+## Non-Negotiable Design Decisions (do not silently change these)
 
-1. **`plan.md`** — the base delivery plan. Contains the graduation floor (11 required capabilities), teaching principles, project scope, the eight-session syllabus, the AI-usage curriculum, assessment rubric, and risks.
-2. **`plan_v2.md`** — the roster-grounded revision that layers on top of `plan.md` (session format, syllabus, AI curriculum, rubric unchanged unless stated there). It defines the three-track model with named provisional assignments (§2), the per-track deliverable matrix (§5), the **frozen API contract** (§6 — the single source of truth for endpoints, status codes, error shape, pagination envelope), and ADRs recording the key decisions (§7). Where plan.md and plan_v2.md disagree, plan_v2 wins.
-3. **`project-blueprint.md`** — the buildable technical spec of the Task Tracker: code-complete domain/DbContext/controller patterns, sprint backlog with user stories (TT-xx IDs), DB design, engineering standards, and the Agile delivery frame (4 sprints, instructor as Product Owner). The instructor reference repo is constructed from this document.
-4. **`PLAN_EVALUATION.md`** — the audit of the original plan: what was kept, the 10 critical issues found, and the original→revised change table. Read this to understand *why* the plan is shaped the way it is — future planning should stay consistent with its conclusions.
-5. **`MILESTONES.md`** — the big-picture milestone map: per-session project/trainee/instructor milestones, the three assessment gates, and the concept-debt ledger. Check it when writing or revising session material.
-6. **`plan-v1.md`** — the preserved original plan. Historical reference only; superseded. Do not extend it.
-7. **`prompt.txt`** — the original instructor request that produced this work.
-8. **`pre-work/`** — send-ready trainee packs, one per session plus `00-pre-work-gate.md` (environment/baseline gate), indexed in `pre-work/README.md`.
-9. **`teaching-scripts/`** — minute-by-minute instructor delivery scripts for all eight sessions (01 is final; 02–08 are drafts finalized 24h pre-session); the mandatory script template is at the end of `teaching-scripts/01-session-1-script.md`.
-10. **`scripts/`** — session slide decks (currently `session-1-slides.md`).
-11. **`Trainees info/Trainees_interview_analysis.md`** — trainee interview profiles that drive the track assignments.
+- **Controllers, not Minimal APIs.** Thin controllers, DTO records in/out, entities never cross the controller boundary.
+- **SQLite** via EF Core, file-based, zero external services required to run.
+- **Concurrency via optimistic concurrency token** on `TicketType` (RowVersion or manual `Version int` — pin one approach and use it consistently everywhere it applies).
+- **RFC 7807 Problem Details** for every error response. No naked `500`s past Session 6.
+- **Offset pagination** envelope: `{ items, page, pageSize, totalCount }`. Max pageSize 50, default 10.
+- **camelCase JSON**, UTC ISO-8601 timestamps suffixed `Utc` in property names.
+- **JWT auth**, roles `Organizer` / `Attendee`. Role checks via `[Authorize(Roles=...)]`; ownership checks (e.g. "is this organizer's event") are explicit code, not attribute-based.
+- **`IReservationService`** is where the concurrency/hold/expiry business logic lives — never put this logic directly in a controller.
+- **`HoldExpiryService : BackgroundService`** — must resolve a scoped `DbContext` per scan via `IServiceScopeFactory`, never inject `DbContext` directly into a singleton-lifetime background service.
+- **SignalR hub** at `/hubs/events`, group-per-event, broadcasts `AvailabilityChanged(ticketTypeId, availableQuantity)`.
 
-## Central Outcome (the design constraint for everything)
+Explicitly out of scope unless a Stretch task says otherwise: generic repository/UoW, MediatR/CQRS, microservices, message queues, Redis, API versioning, Docker (Docker is Stretch/post-internship).
 
-Every graduating trainee independently builds and explains a database-backed ASP.NET Core endpoint with validation, correct HTTP behavior, DTO mapping, async EF Core access, a test, Git evidence, and verified AI assistance.
+## Working Mode
 
-When editing or extending any document, changes must serve this outcome — not topic coverage. The evaluation explicitly rejected "cover many .NET topics" in favor of "prove a small set of backend capabilities."
+This repo is used two ways — check which one applies before acting:
 
-## Key Curriculum Decisions (do not silently reverse these)
+1. **Instructor prep mode**: generating teaching scripts, starter branches, per-session materials, exit tickets, the API contract doc, ADRs. Output goes in `teaching-scripts/`, `artifacts/`, or similar — mirror whatever structure already exists in the repo; don't invent a new one without checking first.
+2. **Trainee build mode**: actually scaffolding/implementing the ASP.NET Core solution described in the blueprint, session by session. When in this mode, build only the scope assigned to the current session (see the blueprint's session table) — do not jump ahead and implement later sessions' features early, even if it would be "easy to just do now." The whole point is trainees build understanding incrementally.
 
-These were deliberate corrections from the audit (`PLAN_EVALUATION.md`) and the roster analysis (`plan_v2.md`); preserve them in any revision:
+When asked to scaffold the solution from scratch, structure it as:
 
-- **Scope is capped**: Project + TaskItem only. No Users, Assignments, roles, or many-to-many until the core API is complete.
-- **No premature patterns**: no generic repository, Unit of Work wrappers, AutoMapper, MediatR, or CQRS in the core path. Direct EF Core + explicit DTO projection + one focused service. Patterns are stretch/comparison work only.
-- **SQL before EF Core**: raw SQL and relational modeling are taught in Session 3 before the ORM hides them.
-- **Auth is not on the graduation floor**: Session 7 uses a supplied auth starter; implementing auth independently is stretch work.
-- **Testing lands in Session 6** (not late), with both unit and integration tests.
-- **AI verification workflow in every session**: Explain → Plan → Generate → Verify → Reflect. Generated code is only acceptable when the trainee can explain, run, test, and revise it.
-- **Certificate honesty**: three outcomes (Completed / Completed with distinction / Participated), evidence-based rubric with 70/100 floor — never "job-ready" claims for 24 hours.
-- **The API contract is frozen** (`plan_v2.md` §6): all tracks build against the same contract; differentiation is depth on one codebase (three depths), never divergent APIs. Reviews check against the contract, not taste.
-- **Track movement stays open both directions** all internship; demonstrated ability (baseline diagnostic, submissions) beats interview self-report.
-- **Stretch trainees are reviewers, not co-instructors**: they point at the line and ask a question — never type on someone else's machine.
+```
+/SeatSure.sln
+/src/SeatSure.Api/           # Controllers, Program.cs, DTOs, Hubs, BackgroundServices
+/src/SeatSure.Application/   # IReservationService + implementation, business logic
+/src/SeatSure.Infrastructure/# DbContext, EF configurations, migrations
+/tests/SeatSure.Tests/       # xUnit unit + integration tests
+```
 
-## Pre-Work Pack Structure (mandatory template)
+(Simplify to fewer projects if the session's scope doesn't justify the layering yet — Session 4 probably doesn't need four projects. Use judgment; the blueprint's architecture diagram shows the target end-state, not necessarily the Session-4 starting state.)
 
-Every file in `pre-work/` follows this exact 9-section structure — keep it when editing or adding packs:
+## Testing
 
-1. Why you are studying this
-2. Learning outcomes
-3. Selected study material
-4. Required exercise
-5. Check yourself
-6. Submit
-7. Foundation support
-8. Stretch
-9. Blocked?
+`dotnet test` must stay green. When implementing the concurrency logic (§4 of the blueprint), always pair it with a test that proves the `409`-on-oversell behavior — that test is the evidence the whole project pivot was designed around.
 
-Constraints: required work is 30–45 minutes, one resource per concept, one small artifact. Packs are sent 48 hours before a session; submissions due 12 hours before. Do not pad packs with extra optional resources.
+## Questions to Ask Before Generating Large Chunks of Code
 
-## Editing Conventions
-
-- All content is Markdown intended to be sent directly to trainees or converted to the company's document format — write for that audience (clear, imperative, no internal jargon).
-- Placeholders (repository paths, ports, channel names) exist intentionally in packs; the instructor replaces them before sending (see "Instructor Review Before Sending" in `pre-work/README.md`).
-- If you change the syllabus in `plan.md`/`plan_v2.md`, propagate the change to the matching pre-work pack, teaching script, and `pre-work/README.md` schedule table, and vice versa. Changes to the API contract or entities must also be reflected in `project-blueprint.md` (and story IDs TT-xx kept consistent).
-- `README.md` at the root is the workspace index — update it if documents are added or renamed.
-- Open questions for the client are tracked in `plan.md` §13 ("Decisions to Confirm With Netpoints"); add new client-facing decisions there rather than embedding assumptions in packs.
+- Which session's scope is this for? (Don't build Session 7's SignalR hub while doing Session 4 work.)
+- Core or Stretch? (Keep them clearly separated — e.g. a `// STRETCH:` comment or a separate branch, whichever the instructor prefers.)
+- Is this instructor-facing (teaching script) or trainee-facing (starter code)?
